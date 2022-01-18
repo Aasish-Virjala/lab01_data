@@ -25,7 +25,7 @@ Car::Car(char const* const manufacturerName, char const* const modelName, Perfor
     headonDragCoeff = perf.headonDragCoeff;
     horsepower = perf.horsepower;
     seatCount = numSeats;
-    backseetDoors = backseatDoorDesign;
+    backseatDoors = backseatDoorDesign;
 }
 
 Car::Car(Car const& o) {
@@ -48,51 +48,51 @@ Car& Car::operator=(Car const& o) {
         return *this;
     }
     manufacturer = strdup(o.getManufacturer());
-    model = strdup(o.getodel());
+    model = strdup(o.getModel());
     zeroToSixtyNs = o.getStats().zeroToSixtyNs;
     headonDragCoeff = o.getStats().headonDragCoeff;
     horsepower = o.getStats().horsepower;
     return *this;
 }
 
-char const* getManufacturer() const {
+char const* Car::getManufacturer() const {
     return manufacturer;
 }
-char const* getModel() const {
+char const* Car::getModel() const {
     return model;
 }
 
-PerformanceStats getStats() const {
+PerformanceStats Car::getStats() const {
     PerformanceStats stats = {horsepower,zeroToSixtyNs,headonDragCoeff};
     return stats;
 }
 
-uint8_t getSeatCount() const {
+uint8_t Car::getSeatCount() const {
     return seatCount;
 }
 
-DoorKind getBackseatDoors() const {
+DoorKind Car::getBackseatDoors() const {
     return backseatDoors;
 }
 
-void manufacturerChange(char const* const newManufacturer) [
+void Car::manufacturerChange(char const* const newManufacturer) {
     manufacturer = strdup(newManufacturer);
-]
+}
 
-void modelNameChange(char const* const newModelName) {
+void Car::modelNameChange(char const* const newModelName) {
     model = strdup(newModelName);
 }
 
-void reevaluateStats(PerformanceStats newStats) {
+void Car::reevaluateStats(PerformanceStats newStats) {
     horsepower = newStats.horsepower;
     zeroToSixtyNs = newStats.zeroToSixtyNs;
     headonDragCoeff = newStats.headonDragCoeff;
 }
 
-void recountSeats(uint8_t newSeatCount) {
+void Car::recountSeats(uint8_t newSeatCount) {
     seatCount = newSeatCount;
 }
 
-void reexamineDoors(DoorKind newDoorKind) {
+void Car::reexamineDoors(DoorKind newDoorKind) {
     backseatDoors = newDoorKind;
 }
